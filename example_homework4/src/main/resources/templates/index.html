@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Главная</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div class="heder_h2">
+      <h2 class="users">ПОЛЬЗОВАТЕЛИ</h2>
+    </div>
+
+    <div th:switch="${persons}">
+      <h2 th:case="null">No users found!</h2>
+      <div th:case="*">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="th">ID</th>
+              <th class="th">Name</th>
+              <th class="th">PASS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tr" th:each="user : ${persons}">
+              <td class="td" th:text="${user.id}"></td>
+              <td class="td" th:text="${user.name}"></td>
+              <td class="td" th:text="${user.pass}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="btn_div">
+        <a class="btn-primary" href="/registr"
+          ><img class="img_link" src="images/Greenadd.png" alt=""
+        /></a>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- https://hrcode.su/javascript/kak-sozdat-dinamicheskuyu-tabliczu-v-html-s-pomoshhyu-javascript/?ysclid=lvsdmgzzk222687738 -->
